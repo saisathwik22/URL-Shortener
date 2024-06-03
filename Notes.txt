@@ -1,0 +1,8 @@
+handleGenerateNewShortUrl ---> controllers ---> url.js
+handleGetAnalytics ---> controllers ---> url.js
+
+Data schema setup ---> models ---> url.js
+
+"/", "/analytics/:shortid" ----> routes ---> url.js
+
+using "shortid() npm package" for shorturl generation

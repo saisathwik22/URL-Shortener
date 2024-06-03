@@ -3,6 +3,7 @@ const URL = require("../models/url");
 
 async function handleGenerateNewShortURL(req, res) {
   const body = req.body;
+  //if reqBody == 0 then there is no url in it.
   if (!body.url) return res.status(400).json({ error: "Url is required" });
   const shortID = shortid();
 
@@ -17,6 +18,7 @@ async function handleGenerateNewShortURL(req, res) {
 
 async function handleGetAnalytics(req, res) {
   const shortId = req.params.shortId;
+  // finding the shortid and its data in database and returning related analytics to it.
   const result = await URL.findOne({ shortId });
   return res.json({
     totalClicks: result.visitHistory.length,
