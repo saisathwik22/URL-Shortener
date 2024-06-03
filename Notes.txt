@@ -6,3 +6,19 @@ Data schema setup ---> models ---> url.js
 "/", "/analytics/:shortid" ----> routes ---> url.js
 
 using "shortid() npm package" for shorturl generation
+
+view folder ---> to create EJS files (html files) ----> ".ejs"
+----------------------------------------------------------------------------------------------------------------------
+
+SERVER-SIDE Rendering with EJS
+
+when our html/web page is rendered from server ---> it is Server side rendering.
+simple terms, html code written in javascript file. 
+example:- app.get('/test', (req, res) => {
+    return res.send("<h1> hey from server </h1>");
+})
+Makes Nodejs code messy and unreadable with all the HTML Code.
+so, use EJS -- Embedded JavaScript Templating
+EJS makes server side rendering easy.
+
+res.render("file_name_in_ejs_folder")
