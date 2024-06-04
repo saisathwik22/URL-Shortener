@@ -92,3 +92,5 @@ user extracts the token by removing bearer term.
 Bearer authentication --- token authentication --- http authentication scheme.
 use Authorizatonas header name. (standard)
 --------------------------------------------------------------------------------------------------------------------------
+Authorizaton: are you authorized to do this task/ permitted?
+AUTHENTICATION: validation
