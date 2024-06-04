@@ -38,7 +38,7 @@ Statefull authentication
 
 Stateless authentication
 --> state removed from server
---> id/token made for user, includes the data which was supposedly stored in server [Statefull].
+--> id/token made for user, includes the data which was supposed to be stored in server [Statefull].
 --> further the token is locked, so that one can read it but cant change it.
 [car Parking token, currency]
 We use "JWT tokens" for this.
@@ -51,3 +51,44 @@ decode token ---> payload/data.
 encode payload/data ---> token generated.
 
 Never leak your TOKENS!!**
+--------------------------------------------------------------------------------------------------------------------------
+COOKIE Concept:
+
+client ---- user/pass ------> server ---- check with DB
+if user/pass is correct/valid, server generates JWT token.
+this token is stored in a COOKIE with a "uid".
+this cookie is given to client.
+Now, whenever client sends any request to server, the browser also sends the cookie along the request.
+Now, server checks for uid cookie, if not present --> user logged out.
+if request has the uid cookie ---> it picks cookieValue/token ---> validates if the token is server-generated or not.
+if yes, then user is also valid, and user info is extracted from the token.
+
+COOKIES --- domain specific
+cookies go back to the domain, for which server created them
+cookies are secure by default.
+limited till browser only.
+cookie is a browser-feature.
+
+res.cookie(name, value[, options])
+
+property(type) ---> description
+
+domain(string) ---> domain name for the cookie, defaults to the domain name of the app.
+encode(function) ---> synch function used for cookie value encoding, defaults to encodeURIComponent.
+expires(date) ---> expiry date of cookie in GMT. if not specified or set to 0, creates a session cookie.
+httpOnly(Boolean) ---> flags the cookie to be accessible only by web server.
+signed(boolean) ---> indicates if cookie should be signed.
+secure(booolean) ---> marks the cookie to be used with https only.
+path(string) ---> path for the cookie, defaults to "/". 
+
+Authorizaton header
+Authorizaton: Bearer <token>
+server reads the above header, removes Bearer and validates <token>.
+
+cookie - auto, only valid for browser.
+headers - send token in form of JSON.
+when user requests we send header "Authorizaton: Bearer <token>"
+user extracts the token by removing bearer term.
+Bearer authentication --- token authentication --- http authentication scheme.
+use Authorizatonas header name. (standard)
+--------------------------------------------------------------------------------------------------------------------------
