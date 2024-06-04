@@ -22,3 +22,32 @@ so, use EJS -- Embedded JavaScript Templating
 EJS makes server side rendering easy.
 
 res.render("file_name_in_ejs_folder")
+
+--------------------------------------------------------------------------------------------------------------------------
+AUTHENTICATION Patterns
+Stateless ---> which has no State
+STATEFULL ---> which maintains a State
+when client sends request to server, server issues a unique id which is called session uid for further authentication.
+uid is transferred through cookies, response, headers.
+client ----> Auth middleware -----> endpoint route
+authmiddleware checks for cookie value/uid, if valid calls next() else request rejected.
+
+Statefull authentication
+--> memory intensive --> uses server memory to store the state which is limited.
+--> to solve this we have "STATELSS authentication"
+
+Stateless authentication
+--> state removed from server
+--> id/token made for user, includes the data which was supposedly stored in server [Statefull].
+--> further the token is locked, so that one can read it but cant change it.
+[car Parking token, currency]
+We use "JWT tokens" for this.
+
+JSON WEB TOKEN:
+3 integrations --> header, payload, verify signature.
+every payload has a unique token, a token can be used to access the payload/data mapped to that token.
+token is an encoded/encrypted form of a payload data.
+decode token ---> payload/data.
+encode payload/data ---> token generated.
+
+Never leak your TOKENS!!**
